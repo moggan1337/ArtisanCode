@@ -1,0 +1,32 @@
+{
+  "artisan": {
+    "name": "ArtisanCode",
+    "version": "0.1.0"
+  },
+  "defaults": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-4-20250514",
+    "temperature": 0.7,
+    "maxTokens": 4096
+  },
+  "providers": {
+    "anthropic": {
+      "name": "Anthropic",
+      "requiresKey": true
+    },
+    "openai": {
+      "name": "OpenAI", 
+      "requiresKey": true
+    },
+    "minimax": {
+      "name": "MiniMax",
+      "requiresKey": true,
+      "baseUrl": "https://api.minimax.io/anthropic"
+    },
+    "ollama": {
+      "name": "Ollama",
+      "requiresKey": false,
+      "baseUrl": "http://localhost:11434"
+    }
+  }
+}
