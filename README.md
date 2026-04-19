@@ -243,7 +243,8 @@ Contributions welcome! Please:
 
 MIT License - see [LICENSE](LICENSE) for details.
 
-## 👤 Author
+
+
 
 **Daniel Ideborn**
 - GitHub: [@danielaideborn](https://github.com/danielaideborn)
