@@ -6,141 +6,35 @@
 [![Node](https://img.shields.io/badge/node-%3E%3D18.0.0-green.svg)](package.json)
 [![TypeScript](https://img.shields.io/badge/typescript-5.0-blue.svg)](package.json)
 [![Stars](https://img.shields.io/github/stars/moggan1337/ArtisanCode)](https://github.com/moggan1337/ArtisanCode/stargazers)
+[![Last Commit](https://img.shields.io/github/last-commit/moggan1337/ArtisanCode)](https://github.com/moggan1337/ArtisanCode/commits)
 
-## 🎯 Overview
+## 🚀 Overview
 
-ArtisanCode is an open-source, self-hostable AI coding assistant that helps developers write better code faster. Like Claude Code, it understands your codebase, executes routine tasks, and helps with debugging - all through natural language commands.
+ArtisanCode is an open-source, self-hostable AI coding assistant that helps developers write better code faster. Built as a modern alternative to proprietary solutions, it emphasizes privacy, flexibility, and extensibility.
+
+### Key Benefits
+
+- 🔒 **Privacy-First** - Your code stays on your machine
+- 🤖 **Multi-Model** - Use any LLM provider (Anthropic, OpenAI, MiniMax, Ollama)
+- 🔌 **Extensible** - Plugin system for custom commands and integrations
+- 🛠️ **Tool-Rich** - Built-in tools for file operations, terminal commands, web access
+- 📦 **MCP Ready** - Model Context Protocol support for external tools
 
 ## ✨ Features
 
-- 🤖 **Multi-Model Support** - Works with any LLM provider (Anthropic, OpenAI, MiniMax, Ollama)
-- 🔌 **Extensible Plugin System** - Add custom commands, skills, and integrations
-- 🖥️ **Full Terminal Integration** - Executes commands, manages files, handles git workflows
-- 🎨 **Built-in Tools** - Bash, file editing, search, grep, web fetch
-- 🔒 **Privacy-First** - Self-host locally, your code stays on your machine
-- 📦 **MCP Compatible** - Model Context Protocol support for external tools
-- 🛠️ **Plugin Architecture** - Extend functionality with custom plugins
+### Multi-Provider Support
 
-## 🚀 Quick Start
+Connect to your preferred LLM provider:
 
-```bash
-# Clone the repository
-git clone https://github.com/moggan1337/ArtisanCode.git
-cd ArtisanCode
+| Provider | Models | Status |
+|----------|--------|--------|
+| Anthropic | Claude 3.5 Sonnet, Opus, Haiku | ✅ |
+| OpenAI | GPT-4 Turbo, GPT-4, GPT-3.5 | ✅ |
+| MiniMax | M2.7, M2.5, M2.1, M2 | ✅ |
+| Ollama | Llama 3, Mistral, CodeLlama | ✅ |
+| Custom | Any OpenAI-compatible API | ✅ |
 
-# Install dependencies
-npm install
-
-# Start chatting
-npm run dev
-
-# Or use CLI commands
-npx artisancode chat --provider anthropic
-npx artisancode doctor
-```
-
-## 📦 Installation
-
-### From Source
-
-```bash
-git clone https://github.com/moggan1337/ArtisanCode.git
-cd ArtisanCode
-npm install
-npm run build
-npm link
-```
-
-### Global Usage
-
-```bash
-# After npm link
-artisancode chat
-
-# Or use npx
-npx artisancode chat --provider minimax
-```
-
-## 🔧 Configuration
-
-Create a `.artisancode.json` in your project root:
-
-```json
-{
-  "provider": "anthropic",
-  "model": "claude-sonnet-4-20250514",
-  "apiKey": "your-api-key-here",
-  "mcpServers": {
-    "playwright": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-playwright"]
-    }
-  }
-}
-```
-
-### Environment Variables
-
-```bash
-export ANTHROPIC_API_KEY=your-key
-export OPENAI_API_KEY=your-key
-export MINIMAX_API_KEY=your-key
-```
-
-## 💬 Usage
-
-### Interactive Chat
-
-```bash
-artisancode chat
-```
-
-Options:
-```bash
-artisancode chat --provider anthropic --model claude-sonnet-4-20250514
-artisancode chat --provider minimax --model MiniMax-M2.7-highspeed
-artisancode chat --provider ollama --model llama3
-```
-
-### Code Review
-
-```bash
-artisancode review ./src
-```
-
-### Check Setup
-
-```bash
-artisancode doctor
-```
-
-## 🔌 Providers
-
-### Anthropic (Default)
-
-```bash
-artisancode chat --provider anthropic --model claude-opus-4-20250514
-```
-
-### OpenAI
-
-```bash
-artisancode chat --provider openai --model gpt-4-turbo
-```
-
-### MiniMax
-
-```bash
-artisancode chat --provider minimax --model MiniMax-M2.7-highspeed
-```
-
-### Ollama (Local)
-
-```bash
-artisancode chat --provider ollama --model llama3 --base-url http://localhost:11434
-```
-
-## 🛠️ Built-in Tools
+### Built-in Tools
 
 | Tool | Description |
 |------|-------------|
@@ -150,65 +44,226 @@ artisancode chat --provider ollama --model llama3 --base-url http://localhost:11
 | `grep` | Search text within files |
 | `web_fetch` | Fetch content from URLs |
 
-## 📦 MCP Integration
+### MCP Integration
 
 ArtisanCode supports the Model Context Protocol for extended tooling:
 
 ```bash
-# Add MCP server to .artisancode.json
+# Add MCP servers via config
 artisancode chat --mcp-config ./mcp-config.json
 ```
 
-Example MCP config:
+Supported MCP servers:
+- Filesystem access
+- Git integration
+- GitHub API
+- Browser automation (Playwright)
+- Database tools
+- And more...
+
+## 📦 Installation
+
+### Prerequisites
+
+- Node.js 18+ 
+- npm or yarn
+- API key for your preferred LLM provider
+
+### Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/moggan1337/ArtisanCode.git
+cd ArtisanCode
+
+# Install dependencies
+npm install
+
+# Build the project
+npm run build
+
+# Link globally (optional)
+npm link
+
+# Start chatting
+npm run dev
+```
+
+### Using npm link
+
+```bash
+npm link
+
+# Now you can use globally
+artisancode chat
+artisancode doctor
+artisancode review ./src
+```
+
+## 💻 Usage
+
+### Interactive Chat
+
+Start a conversation with ArtisanCode:
+
+```bash
+artisancode chat
+```
+
+With options:
+
+```bash
+# Use specific provider
+artisancode chat --provider anthropic --model claude-sonnet-4-20250514
+
+# Use MiniMax
+artisancode chat --provider minimax --model MiniMax-M2.7-highspeed
+
+# Use local Ollama
+artisancode chat --provider ollama --model llama3 --base-url http://localhost:11434
+```
+
+### Code Review
+
+Review code in a file or directory:
+
+```bash
+artisancode review ./src
+artisancode review ./src/components/Button.tsx
+```
+
+### Check Setup
+
+Verify your environment:
+
+```bash
+artisancode doctor
+```
+
+### Initialize Configuration
+
+Create a project configuration:
+
+```bash
+artisancode init
+```
+
+## ⚙️ Configuration
+
+### Configuration File
+
+Create `.artisancode.json` in your project root:
+
 ```json
 {
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-20250514",
+  "apiKey": "your-api-key",
+  "temperature": 0.7,
+  "maxTokens": 4096,
   "mcpServers": {
     "filesystem": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/workspace"]
-    },
-    "github": {
-      "command": "npx", 
-      "args": ["-y", "@modelcontextprotocol/server-github"],
-      "env": {
-        "GITHUB_TOKEN": "your-token"
-      }
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "./workspace"]
     }
   }
 }
 ```
 
+### Environment Variables
+
+```bash
+# Set API keys
+export ANTHROPIC_API_KEY=your-key
+export OPENAI_API_KEY=your-key
+export MINIMAX_API_KEY=your-key
+
+# Optional configuration
+export ARTISAN_TEMPERATURE=0.7
+export ARTISAN_MAX_TOKENS=4096
+```
+
+### Provider Configuration
+
+#### Anthropic
+
+```bash
+artisancode chat --provider anthropic \
+  --model claude-opus-4-20250514 \
+  --api-key sk-ant-...
+```
+
+#### OpenAI
+
+```bash
+artisancode chat --provider openai \
+  --model gpt-4-turbo \
+  --api-key sk-...
+```
+
+#### MiniMax
+
+```bash
+artisancode chat --provider minimax \
+  --model MiniMax-M2.7-highspeed \
+  --api-key sk-... \
+  --base-url https://api.minimax.io/anthropic
+```
+
+#### Ollama (Local)
+
+```bash
+artisancode chat --provider ollama \
+  --model llama3 \
+  --base-url http://localhost:11434
+```
+
 ## 🧩 Plugin Development
 
-Create a plugin at `./plugins/my-plugin/`:
+ArtisanCode has an extensible plugin system.
+
+### Creating a Plugin
 
 ```javascript
-// plugin.json
+// plugins/my-plugin/plugin.json
 {
   "name": "my-plugin",
   "version": "1.0.0",
-  "main": "index.js"
+  "main": "index.js",
+  "description": "My custom plugin"
 }
 
-// index.js
+// plugins/my-plugin/index.js
 export default {
   name: 'my-plugin',
   version: '1.0.0',
   
-  async onLoad() {
+  onLoad() {
     console.log('Plugin loaded!');
   },
   
   tools: [
     {
       name: 'my-tool',
-      description: 'Does something cool',
+      description: 'Does something useful',
       execute: async (params) => {
         return { success: true, output: 'Done!' };
       }
     }
   ]
 };
+```
+
+### Plugin Structure
+
+```
+plugins/
+└── my-plugin/
+    ├── plugin.json      # Plugin manifest
+    ├── index.js        # Main entry
+    ├── tools/           # Custom tools
+    ├── commands/        # Custom commands
+    └── hooks/           # Event hooks
 ```
 
 ## 🏗️ Architecture
@@ -229,32 +284,107 @@ ArtisanCode/
 └── tests/           # Test suites
 ```
 
+### Core Components
+
+| Component | Purpose |
+|-----------|---------|
+| `ArtisanAgent` | Main agent orchestrator |
+| `ProviderManager` | LLM provider abstraction |
+| `ToolManager` | Tool registration and execution |
+| `PluginManager` | Plugin loading and lifecycle |
+| `MCPClient` | External tool integration |
+
+## 🔧 Development
+
+### Build
+
+```bash
+npm run build
+```
+
+### Development Mode
+
+```bash
+npm run dev
+```
+
+### Testing
+
+```bash
+npm test
+```
+
+### Linting
+
+```bash
+npm run lint
+```
+
 ## 🤝 Contributing
 
-Contributions welcome! Please:
+Contributions are welcome! Please:
 
 1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Run tests: `npm test`
-5. Submit a PR
+2. Create a feature branch (`git checkout -b feature/amazing`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing`)
+5. Open a Pull Request
+
+### Guidelines
+
+- Follow TypeScript best practices
+- Add tests for new features
+- Update documentation
+- Keep commits atomic
+
+## 📋 Roadmap
+
+- [ ] Streaming response support
+- [ ] WebUI dashboard
+- [ ] Git integration improvements
+- [ ] More built-in tools
+- [ ] VS Code extension
+- [ ] JetBrains IDE plugin
+- [ ] Team collaboration features
+- [ ] Web-based playground
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+**Q: API key not working**
+```bash
+artisancode doctor
+```
+
+**Q: Provider not responding**
+- Check your API key is correct
+- Verify network connectivity
+- Check provider status pages
+
+**Q: Tool execution fails**
+- Ensure proper permissions
+- Check working directory access
+- Review tool-specific requirements
 
 ## 📄 License
 
 MIT License - see [LICENSE](LICENSE) for details.
-
-
-
-
-**Daniel Ideborn**
-- GitHub: [@danielaideborn](https://github.com/danielaideborn)
 
 ## 🙏 Acknowledgments
 
 - Inspired by Claude Code and Anthropic's work
 - Built with TypeScript + Node.js
 - Uses Model Context Protocol for tool integrations
+- Thanks to all contributors
+
+## 🔗 Related Projects
+
+- [SwarmCoder](https://github.com/moggan1337/SwarmCoder) - Multi-agent swarm for code generation
 
 ---
 
-*Built with ❤️ for the developer community*
+<p align="center">
+  Built with ❤️ for the developer community<br>
+  <a href="https://github.com/moggan1337">@moggan1337</a>
+</p>
